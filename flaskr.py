@@ -15,11 +15,11 @@ def conectar_bd():
     return sqlite3.connect(DATABASE)
 
 @app.before_request
-def pre_requesicao():
+def pre_requisicao():
     g.bd = conectar_bd()
 
 @app.teardown_request
-def pos_requisicao():
+def pos_requisicao(exception):
     g.bd.close()
 
 @app.route('/')
